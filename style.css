@@ -757,6 +757,7 @@ a.readmore:hover{
     text-align: center;
     font-size: 18px;
     font-weight: 700;
+    margin: 1rem 0;
 }
 .skillcard img{
     width: 90px;
