@@ -29,6 +29,7 @@ const data = [
       ],
     },
   ];
+
   
   const gameScreen = document.querySelector(".game");
   const resultScreen = document.querySelector(".result");
@@ -37,7 +38,7 @@ const data = [
   const submit = document.querySelector(".submit");
   const play = document.querySelector(".play");
   
-  let qIndex = 0;
+  let qIndex = 0;              /*item index*/             
   let correctCount = 0;
   let wrongCount = 0;
   let total = 0;
@@ -73,7 +74,9 @@ const data = [
       (correctCount - wrongCount) * 10
     }`;
   };
-  
+
+  /*to show questions*/
+
   const showQuestion = (qNumber) => {
     if (qIndex === data.length) return showResult();
     selectedAnswer = null;
@@ -93,6 +96,8 @@ const data = [
     selectAnswer();
   };
   
+  /*get the selected answer */
+
   const selectAnswer = () => {
     answersContainer.querySelectorAll("input").forEach((el) => {
       el.addEventListener("click", (e) => {
