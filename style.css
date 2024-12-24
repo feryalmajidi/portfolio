@@ -49,6 +49,7 @@
      margin: 0;
      color: var(--color-black);
      line-height: 1.6;
+     font-size: 13px;
 }
  a{
      text-decoration:none;
@@ -139,7 +140,7 @@
     width: 100%;
     top: 0;
     z-index: -1;
-   padding: 11em 0 16em;
+   padding: 5em 0 16em;
 background-size:inherit, cover;
 }
 .bg-white{
@@ -154,6 +155,7 @@ background-size:inherit, cover;
     font-weight: bold;
     font-size: 2rem;
 line-height: 1.5;
+padding-top: 3em;
 }
 .title-medium{
     color: var(--color-dark);
@@ -307,6 +309,15 @@ align-self: center;}
 }
 .icon3::before{
     content:"3";
+    position: absolute;
+    left: 76px;
+    top: 45px;
+    font-size: 50px;
+    color: #fff;
+}
+
+.icon4::before{
+    content:"4";
     position: absolute;
     left: 76px;
     top: 45px;
@@ -748,16 +759,27 @@ a.readmore:hover{
     width: 150px;
 }
 .gifanim{
-    margin-top: -7em !important;
+    margin-top: 0 !important;
 }
 .skillcard{
     background-color: #fff;
     padding: 1em;
     border-radius: 5px;
     text-align: center;
-    font-size: 18px;
+    height: 285px;
+   
+}
+.skillcard h3{
+    font-size: 15px;
     font-weight: 700;
-    margin: 1rem 0;
+    margin: 1rem 0
+}
+.skillcard p{
+    font-size: 13px;
+}
+.skillcard li{
+    text-align: left;
+    font-size: 13px;
 }
 .skillcard img{
     width: 90px;
