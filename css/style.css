@@ -781,3 +781,20 @@ textarea.form-control {
 .subtitle{
   color: #f44336;
 }
+
+#backToTopBtn {
+  position: fixed; /* Keeps the button in the same place while scrolling */
+  bottom: 20px;
+  right: 20px;
+  display: block; /* You can use JS to hide it until user scrolls down */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#backToTopBtn:hover {
+  background-color: #0056b3;
+}
