@@ -72,3 +72,10 @@ AOS.init({
 
 
 })(jQuery);
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // Adds the smooth animation
+  });
+}
