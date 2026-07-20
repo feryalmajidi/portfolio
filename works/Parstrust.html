@@ -58,7 +58,7 @@
 					<li class="nav-item  active"><a class="nav-link" href="../index.html">Works</a></li>
 
 					<li class="nav-item dropdown">
-						<a class="nav-link" href="#" aria-haspopup="true" aria-expanded="false">About</a>
+						<a class="nav-link" href="../about.html" aria-haspopup="true" aria-expanded="false">About</a>
 
 					</li>
 
@@ -236,10 +236,10 @@
 					<h2 class="mb-2 ">Prototype</h2>
 					<p>I moved from paper sketches to digital wireframes to simulate and refine
 						 the real-world application experience, 
-						ensuring Kian’s need for speed and clarity remained at the forefront.</p>
+						ensuring user need for speed and clarity remained at the forefront.</p>
 					<h4 class="subtitle">Low-Fidelity Wireframes:</h4>
 					<p>I began with paper sketches and low-fi digital wireframes to establish layout priorities.
-						 To address Kian’s pain points, the onboarding process was streamlined to prevent early drop-offs, 
+						 To address user pain points, the onboarding process was streamlined to prevent early drop-offs, 
 						 the navigation bar was locked to the bottom for thumb-accessibility, and asset cards were 
 						 structured to surface key performance data (like 24h percentage changes) instantly without 
 						 needing to drill down.</p>
@@ -275,16 +275,57 @@
 							<p style="text-align: center;"><img src="../images/parstrust/Design system.png"	style="width: 100%;"></p>
 							
 							
+<h2 class="mb-2 ">Prototype</h2>
+<h4 class="subtitle">Usability test:</h4>
+ <p>The testing consisted of five participants, a mix of casual crypto holders and first-time 
+	crypto app users, reflecting Boris's profile of someone who wants confidence without complexity.
+	Participants were asked to complete two tasks: buy a cryptocurrency from the Market tab, and 
+	send crypto to another wallet using the transfer flow, including PIN verification. 
+	The goal was to observe how intuitively users moved between market discovery and transactional 
+	screens, gather feedback on visual clarity and trust, and identify any points of hesitation or 
+	confusion in the flow.</p>
+	<p>Participants found the Home and Market screens easy to scan, and liked that 24-hour 
+		performance data was visible without extra taps. The buy flow tested especially
+		 well — asset selection, amount entry, and confirmation felt fast and clear to everyone.
+		  The consistent point of confusion across all participants happened in the 
+		  Wallet Send flow: after entering their PIN, users landed on a static confirmation 
+		  screen with no visible processing state, and several assumed the transfer had failed 
+		  or frozen, tapping "Confirm" multiple times because nothing on screen acknowledged 
+		  that the transaction was underway.</p>
+			<h4 class="subtitle">Updated user flow:</h4>
+			<p>I added a brief animated "Processing" state immediately after PIN entry, 
+				before the final "Transfer Complete" screen, disabling the confirm button 
+				during this window. Originally, the flow moved straight from PIN entry to 
+				completion with no transitional feedback, but testing showed users needed a 
+				clear, visible signal that the system had registered their action — especially 
+				at the exact moment they're handing over funds, where trust matters most.</p>	
+				
+				<p style="text-align: center;"><img src="../images/parstrust/update.jpg" style="width: 60%;" ></p>
+				<h2 class="mb-2 ">Outcomes</h2>	
+				<ul>
+					<li>Identified and resolved the primary breakdown in the Wallet
+						 Send flow: no processing feedback between PIN verification and 
+						 transaction completion.</li>
+					<li>
+						Added a transitional loading state to prevent duplicate taps 
+						and reinforce trust during high-stakes financial actions.</li>	
+						<li>
+							Validated that the simplified Home and Market screens 
+							supported fast, confident, at-a-glance decisions, as intended.</li> 
+				</ul>
 
-							
-							
+				<h2 class="mb-2">Conclusion:</h2>
+				<p>Through this design process, I learned that in financial products,
+				 the silence between an action and its confirmation is where trust breaks down 
+				 fastest. Even a fast, clean flow needs explicit system feedback at every step to 
+				 feel safe — speed alone isn't enough if the user isn't sure the app is listening.</p>
 				</div>
-
+              <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/1kuFwmuFd65IF6ebPDYs5R/Pars-trust?node-id=1-855&viewport=188%2C90%2C0.03&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A847&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
 			</div>
 			<div class="row mt-5 justify-content-center">
 				<div class="col-lg-6 text-center">
 
-					<a href="portfolio-single2.html" class="btn btn-dark">Next Work</a>
+					<a href="./Docnearby.html" class="btn btn-dark">Previous Work</a>
 				</div>
 			</div>
 		</div>
