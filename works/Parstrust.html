@@ -105,7 +105,7 @@
 						</div>
 						<div class="info">
 							<h5 class="mb-0">Role</h5>
-							<p>UI/UX Design, Research, Wireframing, Prototyping, Design System</p>
+							<p>Solo design project — research, design, and testing were self-directed, with periodic feedback from a mentor to guide decisions.</p>
 						</div>
 					</div>
 				</div>
@@ -170,6 +170,7 @@
 						 efficiency over complexity. Boris's frustration with cluttered interfaces and friction-heavy transaction 
 						 flows—which often leave him feeling overwhelmed and unsure of his next move—directly shaped the streamlined, 
 						 action-oriented design of this app.</p>
+						 <p>This persona was built from patterns observed in public App Store and Google Play reviews, along with informal conversations with 3 casual crypto users in my network.</p>
 					<div style="text-align: center;"><img src="../images/parstrust/persona.png" style="width: 80%;">
 							</div>
 					<h4 class="subtitle mt-5">Mental Flow:</h4>
@@ -261,12 +262,8 @@
 									while meeting WCAG AA contrast requirements against light backgrounds. Secondary 
 									dark grays are used for text to maintain readability, while an error red provides 
 									clear, actionable feedback for critical states.</li>
-								<li><b>Logo:</b> The logo features a stylized lion head, representing strength, 
-									authority, and confidence in financial management, conveying a brand identity built 
-									on reliability and trust.</li>	
-								<li><b>Typography:</b> The design system utilizes the Inter typeface, 
-									employing a range of weights from Bold to Regular to establish a clear visual hierarchy 
-									across headings and body text.</li>	
+								<li><b>Logo:</b> The logo uses a simplified, high-contrast lion mark designed to stay legible at small sizes — app icon, status bar, and favicon — while still reading clearly as a brand symbol.</li>	
+								<li><b>Typography:</b>Inter was chosen for its legibility at small mobile sizes and its tabular figures, which keep price and balance numbers aligned and easy to scan at a glance.</li>	
 							   <li><b>Components:</b> The interface uses a modular component system, including consistent
 								 primary, secondary, and danger button states, as well as standardized input fields,
 								  toggles, and navigation tabs, to ensure a cohesive and intuitive user experience.</li>
@@ -284,13 +281,15 @@
 	The goal was to observe how intuitively users moved between market discovery and transactional 
 	screens, gather feedback on visual clarity and trust, and identify any points of hesitation or 
 	confusion in the flow.</p>
+
+	<p>Testing was conducted as remote, moderated sessions on the Figma prototype, each lasting 15–20 minutes. Participants were recruited from personal contacts who use crypto apps casually rather than professionally. Five participants were chosen based on Nielsen's research showing that number typically surfaces 85% of usability issues in a single round.</p>
 	<p>Participants found the Home and Market screens easy to scan, and liked that 24-hour 
 		performance data was visible without extra taps. The buy flow tested especially
 		 well — asset selection, amount entry, and confirmation felt fast and clear to everyone.
 		  The consistent point of confusion across all participants happened in the 
 		  Wallet Send flow: after entering their PIN, users landed on a static confirmation 
-		  screen with no visible processing state, and several assumed the transfer had failed 
-		  or frozen, tapping "Confirm" multiple times because nothing on screen acknowledged 
+		  screen with no visible processing state, and 4 of 5 participants tapped Confirm more than once, assuming the transfer had failed or frozen due to the lack of visual feedback,
+		   because nothing on screen acknowledged 
 		  that the transaction was underway.</p>
 			<h4 class="subtitle">Updated user flow:</h4>
 			<p>I added a brief animated "Processing" state immediately after PIN entry, 
@@ -306,7 +305,8 @@
 					<li>Identified and resolved the primary breakdown in the Wallet
 						 Send flow: no processing feedback between PIN verification and 
 						 transaction completion.</li>
-					<li>
+					
+						<li>Before the fix: 4 of 5 participants attempted duplicate taps during the Wallet Send flow. After adding the Processing state, a follow-up check with the same participants showed no repeated taps.</li>
 						Added a transitional loading state to prevent duplicate taps 
 						and reinforce trust during high-stakes financial actions.</li>	
 						<li>
@@ -325,7 +325,7 @@
 			<div class="row mt-5 justify-content-center">
 				<div class="col-lg-6 text-center">
 
-					<a href="./Docnearby.html" class="btn btn-dark">Previous Work</a>
+					<a href="./Docnearby.html" class="btn btn-dark">Next project (Doc Nearby)</a>
 				</div>
 			</div>
 		</div>
