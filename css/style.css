@@ -57,6 +57,7 @@ h3, .h3 {
 h4, .h4 {
   font-size: 20px;
   line-height: 30px;
+  margin-bottom: 0;
 }
 
 h5, .h5 {
@@ -797,4 +798,7 @@ textarea.form-control {
 
 #backToTopBtn:hover {
   background-color: #f44336;
+}
+.datetime {
+  color: #787878;
 }
