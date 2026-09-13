@@ -114,7 +114,8 @@ As part of my research, I looked at competitor apps and public App Store / Googl
 				<li>Cluttered home screens: too much data users don't need at a glance.</li>
 				<li>Desktop-first charts: interactions that feel built for a mouse, not a thumb.</li>
 				<li>Friction-heavy transactions: too many steps, and confirmation states that aren't clear.</li>
-					
+					</ul>
+
 				<h2 class="mb-2 ">Solution</h2>
 					<p>A focused mobile trading experience designed around the user's most common actions rather than 
 						a checklist of features. The home screen surfaces only total balance, top holdings, and a 24-hour
@@ -132,6 +133,62 @@ As part of my research, I looked at competitor apps and public App Store / Googl
 						
 					</div>
 
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th style="width: 25%;">Criteria</th>
+									<th style="width: 12.5%;">Coinbase</th>
+									<th style="width: 12.5%;">Binance</th>
+									<th style="width: 12.5%;">Kraken</th>
+									<th style="width: 12.5%;">Metamask</th>
+									<th style="width: 25%;">Pars Trust</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr >
+									<td>Onboarding clarity</td>
+									<td>❌ Weak</td>
+									<td>❌ Weak</td>
+									<td>⚠️ Moderate</td>
+									<td>❌ Weak</td>
+									<td>✅ Guided, low-friction</td>
+								</tr>
+								<tr >
+									<td>Chart built for touch</td>
+									<td>❌ Desktop-first</td>
+									<td>⚠️ Partial</td>
+									<td>❌ Desktop-first</td>
+									<td>⚠️ Partial</td>
+									<td>✅ Rebuilt for thumb use</td>
+								</tr>
+								<tr >
+									<td>Home screen data density</td>
+									<td>❌ High</td>
+									<td>❌ High</td>
+									<td>⚠️ Moderate</td>
+									<td>❌ High</td>
+									<td>✅ Balance, top holdings, 24h summary only</td>
+								</tr>
+								<tr >
+									<td>Transaction confirmation clarity</td>
+									<td>❌ Inconsistent</td>
+									<td>⚠️ Partial</td>
+									<td>❌ Inconsistent</td>
+									<td>⚠️ Partial</td>
+									<td>✅ Explicit "Processing" state</td>
+								</tr>
+								<tr >
+									<td>Security / verification depth</td>
+									<td>✅ Strong</td>
+									<td>✅ Strong</td>
+									<td>✅ Strong</td>
+									<td>⚠️ Moderate</td>
+									<td>✅ PIN verification on every transaction</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 					<p><b>Challenges I found:</b><br>
 Most apps prioritize professional-grade data over everyday usability. 
 Onboarding is usually weak, dropping users straight into complexity with no orientation. Transaction confirmation flows are inconsistent across apps, which hurts trust right when users need reassurance most.
@@ -142,7 +199,8 @@ Onboarding is usually weak, dropping users straight into complexity with no orie
 This research fed into the design principles and screen structure below, which I worked on with guidance from the senior designer on the project.
 
 					</p>
-					
+
+
 
 <h2 class="mb-2">Design principles</h2>
 <p>Based on the research, the project was guided by four principles:</p>
@@ -152,7 +210,16 @@ This research fed into the design principles and screen structure below, which I
 	<li><b>Trust:</b> the visual system should communicate data clearly without feeling cold or overwhelming.</li>
 	<li><b>Focus: </b>design around the user's most frequent actions, not a full feature list.</li>
 </ul>
- 
+
+<h2 class="mb-2">What I'd want to measure</h2>
+<p>This never went live, so I couldn't test any of this for real. But if it had, here's what I'd want to check:</p>
+<ul>
+	<li>How long it takes a returning user to go from opening the app to finishing a buy or sell</li>
+	<li>How many new users make it through onboarding without dropping off halfway</li>
+	<li>How many people contact support asking if their transaction actually went through</li>
+	<li>How often people get stuck or locked out at the PIN step — that would tell me if it's actually clear or just annoying</li>
+</ul>
+
 <h2 class="mb-2">Ideate & structure</h2>
 <p>I mapped out the core screen structure and action paths based on the principles above, working from what users do most often.</p>
 <h4 class="subtitle">Key Design Decisions:</h4>
@@ -172,6 +239,47 @@ This research fed into the design principles and screen structure below, which I
 	<li>Order Management Flow: Home → Order → Filter orders → Order info.</li>
 </ul>
 
+<h4 class="subtitle">Flow diagram — Wallet Send:</h4>
+<p>Mapping this one out visually is what made the PIN-verification step and the need for a distinct "Processing" state obvious — on paper it looked like one more tap, but as a flow it's clearly the highest-stakes moment in the whole app.</p>
+<div style="text-align: center; overflow-x: auto;">
+<svg viewBox="0 0 980 160" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 980px; height: auto;">
+	<defs>
+		<marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+			<path d="M0,0 L6,3 L0,6 Z" fill="#8a8a8a" />
+		</marker>
+	</defs>
+	<!-- Home -->
+	<rect x="10" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
+	<text x="75" y="85" text-anchor="middle" font-size="14" fill="#333">Home</text>
+	<line x1="140" y1="80" x2="180" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+	<!-- Wallet -->
+	<rect x="180" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
+	<text x="245" y="85" text-anchor="middle" font-size="14" fill="#333">Wallet</text>
+	<line x1="310" y1="80" x2="350" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+	<!-- Send crypto -->
+	<rect x="350" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
+	<text x="415" y="85" text-anchor="middle" font-size="14" fill="#333">Send crypto</text>
+	<line x1="480" y1="80" x2="520" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+	<!-- Confirm payout -->
+	<rect x="520" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
+	<text x="585" y="85" text-anchor="middle" font-size="14" fill="#333">Confirm payout</text>
+	<line x1="650" y1="80" x2="690" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+	<!-- Verify PIN -->
+	<rect x="690" y="55" width="130" height="50" rx="8" fill="#fff6e0" stroke="#e6c877" />
+	<text x="755" y="80" text-anchor="middle" font-size="14" fill="#333">Verify PIN</text>
+	<text x="755" y="96" text-anchor="middle" font-size="10" fill="#8a7433">highest-stakes step</text>
+	<line x1="820" y1="80" x2="840" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+	<!-- Success -->
+	<rect x="840" y="55" width="130" height="50" rx="8" fill="#eaf6ec" stroke="#8fc79b" />
+	<text x="905" y="85" text-anchor="middle" font-size="14" fill="#2f6b3a">Success</text>
+</svg>
+</div>
+
 
 					<h2 class="mb-2 ">Prototype (my contribution)</h2>
 					<p>I moved from paper sketches to digital wireframes, then built the interactive prototype.</p>
@@ -185,7 +293,7 @@ This research fed into the design principles and screen structure below, which I
 					<p style="text-align: center;"><img src="../images/parstrust/lofi.png" style="width: 70%;"></p>
 
 
-					<h4 class="subtitle">Interactive Prototype:</h2>
+					<h4 class="subtitle">Interactive Prototype:</h4>
 						<p>I built a high-fidelity interactive prototype in Figma, focused on the transaction and wallet management Flows
 							 the real-time price chart with touch-friendly time selectors, a bottom action bar for buy/sell/transfer, 
 							 PIN verification for transaction security, and confirmation screens (like "Purchase Complete").</p>
@@ -194,8 +302,37 @@ This research fed into the design principles and screen structure below, which I
 								disabled during that window to give the user a clear signal that the system had registered their action.</p>
 
 						<p style="text-align: center;"><img src="../images/parstrust/hifi.jpg" style="width: 100%;"></p>
-						
-							
+
+						<h4 class="subtitle">Handling Failure Gracefully:</h4>
+						<p>Money-moving flows can't fail silently, so I designed explicit states for the moments
+							where a transaction can't complete as expected:</p>
+						<ul>
+							<li><b>Insufficient balance:</b> The buy/sell/transfer action is disabled before
+								submission (not after), with the exact shortfall shown inline so the user doesn't
+								hit a wall at the PIN step.</li>
+							<li><b>PIN mismatch or timeout:</b> After a failed PIN attempt, the field clears with a
+								clear retry message; after repeated failures, the flow locks temporarily and
+								explains why, instead of failing silently.</li>
+							<li><b>Network/price-feed interruption mid-transaction:</b> If live pricing drops during
+								a buy/sell, the confirm action is paused and the user is shown a "reconnecting"
+								state rather than letting them confirm against stale data.</li>
+						</ul>
+						<p>These states matter more in a financial app than almost anywhere else — an unclear
+							failure isn't just a bad experience, it's a trust problem.</p>
+
+							<p style="text-align: center;"><img src="../images/parstrust/error.jpg" style="width: 80%;"></p>
+
+						<h4 class="subtitle">What I'd Test Next:</h4>
+						<p>I didn't have the chance to formally test this prototype with users, but if I did, these
+							are the questions I'd prioritize:</p>
+						<ul>
+							<li>Does the "Processing" state actually reduce hesitation at the confirm step, or do
+								users still feel unsure whether their transaction went through?</li>
+							<li>Can first-time users complete a buy/sell/transfer without hesitating on any screen,
+								compared to their usual app?</li>
+							<li>Do the insufficient-balance and PIN-failure states get noticed and understood before
+								users retry the action?</li>
+						</ul>
 
 				<h2 class="mb-2">Conclusion:</h2>
 				<p>Working on this project, especially the competitive research, showed me how much trust in financial apps depends on the small
