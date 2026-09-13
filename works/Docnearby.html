@@ -123,6 +123,15 @@ Finding the right doctor in a new city can be stressful—especially when dealin
 					<p><img src="../images/Docnearby/steps.png" style="width: 100%; margin-top: 3em;"></p>
 					<h2 class="mb-2 ">Empathize & Research</h2>
 					<p>To understand what expats in Vienna truly struggle with, I looked into their daily pain points and built a user persona.</p>
+					<h4 class="subtitle">Research Method:</h4>
+					<p>To ground the persona in real behavior rather than assumptions, I conducted 5 semi-structured interviews with expats living in Vienna, recruited through local expat Facebook groups and BFI classmates. Each session (~20–30 min) focused on their most recent experience finding a doctor—what they searched for, where they got stuck, and what made them trust (or distrust) a provider.</p>
+					<p><b>Key findings from interviews:</b></p>
+					<ul>
+						<li>4 out of 5 participants had given up on a booking attempt at least once due to unclear language support.</li>
+						<li>Insurance compatibility was described as "a guessing game" by most participants—they typically called the clinic to confirm before booking.</li>
+						<li>No participant trusted review counts alone; they wanted to see <i>why</i> a review was positive (bedside manner vs. wait time vs. English fluency).</li>
+					</ul>
+					<p>These findings directly shaped the three filter priorities (language, insurance, specialty) and the decision to surface insurance/language tags directly on the doctor card instead of hiding them behind a detail view.</p>
 					<h4 class="subtitle">User Persona:</h4>
 					<p>Parya represents an expat professional dealing with local bureaucracy and language hurdles. Her struggles—like finding English-speaking specialists or figuring out restricted clinic hours—directly shaped the core features of DocNearby.</p>
 					<div style="text-align: center;"><img src="../images/Docnearby/persona.jpg"
@@ -140,19 +149,62 @@ Finding the right doctor in a new city can be stressful—especially when dealin
 						<img src="../images/Docnearby/doclib.jpg">
 					</div>
 
-					<p><b>Challenges:</b><br>
-						They do not support seamless interactive map navigation, lack intuitive multi-language filtering
-						for non-German speakers, and often present a cluttered user experience filled with
-						advertisements. Additionally, they lack up-front transparency regarding specific public
-						insurance (ÖGK) vs. private selection and do not provide optimized localized radius searches
-						tailored tightly for Vienna's individual districts.
-					</p>
-					<p><b>Strengths</b><br>
-						They offer a highly comprehensive database of active medical professionals in Austria, supported
-						by extensive repositories of authentic patient reviews to establish provider credibility.
-						Furthermore, they utilize powerful, real-time automated appointment booking algorithms with
-						instant calendar syncing and automated push notifications to effectively eliminate missed time
-						slots.
+					<div class="table-responsive mt-5">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Criteria</th>
+									<th>Existing apps (DocFinder, DocLib)</th>
+									<th>DocNearby</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Provider database size</td>
+									<td>✅ Extensive</td>
+									<td>Smaller, curated</td>
+								</tr>
+								<tr>
+									<td>Patient reviews</td>
+									<td>✅ High volume</td>
+									<td>Basic, trust-focused</td>
+								</tr>
+								<tr>
+									<td>Real-time booking + calendar sync</td>
+									<td>✅ Yes</td>
+									<td>✅ Yes</td>
+								</tr>
+								<tr>
+									<td>Interactive map-first navigation</td>
+									<td>❌ Limited</td>
+									<td>✅ Core to the experience</td>
+								</tr>
+								<tr>
+									<td>Multi-language filtering</td>
+									<td>❌ Weak for non-German speakers</td>
+									<td>✅ Explicit language tags</td>
+								</tr>
+								<tr>
+									<td>Insurance clarity (ÖGK vs. private)</td>
+									<td>❌ Buried or absent</td>
+									<td>✅ Shown upfront on every card</td>
+								</tr>
+								<tr>
+									<td>Ad-free browsing experience</td>
+									<td>❌ Cluttered with ads</td>
+									<td>✅ Clean, no ads</td>
+								</tr>
+								<tr>
+									<td>Localized radius search (by district)</td>
+									<td>❌ Generic radius only</td>
+									<td>✅ Vienna district-aware</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p><b>Takeaway:</b> Existing tools win on raw data volume, but lose expats at the trust and
+						comprehension stage. DocNearby's opportunity isn't more data—it's making the data expats
+						actually need (language, insurance, distance) impossible to miss.
 					</p>
 					<h2 class="mb-2 ">Define</h2>
 					<p>Based on the research, I set four simple design rules to guide the project:</p>
@@ -205,6 +257,29 @@ Finding the right doctor in a new city can be stressful—especially when dealin
 						</p>
 						<p style="text-align: center;"><img src="../images/Docnearby/prototype.jpg"
 								style="width: 100%;"></p>
+						<h4 class="subtitle">Handling Failure Gracefully:</h4>
+						<p>Booking flows break down quietly—a user filters for something that doesn't exist, or a
+							network hiccup interrupts confirmation. I designed three fallback states so the app
+							never leaves users guessing:</p>
+						<ul>
+							<li><b>No matching providers:</b> When a filter combination (e.g., specialty + language +
+								insurance) returns zero results, instead of a dead-end empty state, the screen
+								suggests relaxing the most restrictive filter first (usually language) and shows the
+								nearest 3 providers that match everything except that one criterion.</li>
+							<li><b>Booking confirmation failure:</b> If the booking request fails after the user taps
+								"Confirm," the app shows a clear retry state with the reason in plain language
+								("This slot was just taken — here are the next available times") rather than a
+								generic error, so users don't re-attempt a booking that's already gone.</li>
+							<li><b>Session/connectivity loss mid-flow:</b> If connectivity drops during the
+								multi-step booking flow, selections (date, time, provider) are preserved locally so
+								the user resumes exactly where they left off instead of restarting the flow.</li>
+						</ul>
+						<p>Designing these upfront—rather than as an afterthought—was informed by the usability test
+							insight: users' anxiety about "did it work?" wasn't limited to the final confirmation
+							screen; it showed up anywhere the flow could silently fail.</p>
+
+							<p style="text-align: center;"><img src="../images/Docnearby/error.jpg" width="80%"></p>
+
 						<h4 class="subtitle">Style Guide:</h2>
 
 							<p>The primary blue was chosen to signal trust and medical reliability while meeting WCAG AA
