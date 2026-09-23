@@ -35,6 +35,69 @@
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		};</script>
 
+		<style>
+		.ds-wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; margin-top: 1.5rem; }
+		.ds-col { display: flex; flex-direction: column; gap: 20px; }
+		.ds-card { background: #fff; border: 1px solid #E4E6EA; border-radius: 14px; padding: 24px; }
+		.ds-card h4 { font-size: 16px; font-weight: 700; margin: 0 0 4px; }
+		.ds-card .ds-sub { color: #6B7280; font-size: 13px; line-height: 1.55; margin: 0 0 18px; }
+		.ds-group + .ds-group { margin-top: 18px; }
+		.ds-label { font-size: 11px; font-weight: 600; color: #6B7280; letter-spacing: .02em; margin-bottom: 8px; }
+		.ds-swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+		.ds-chip { height: 48px; border-radius: 8px; border: 1px solid rgba(0,0,0,.06); margin-bottom: 6px; }
+		.ds-swatch .name { font-size: 12px; font-weight: 600; color: #14171C; }
+		.ds-swatch .hex { font-size: 11px; color: #6B7280; }
+		.ds-type-row { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 11px 0; border-bottom: 1px solid #E4E6EA; }
+		.ds-type-row:last-child { border-bottom: none; padding-bottom: 0; }
+		.ds-type-row .ds-tlabel { font-size: 11px; color: #6B7280; width: 110px; flex-shrink: 0; }
+		.ds-t-balance { font-size: 24px; font-weight: 700; color: #14171C; }
+		.ds-t-title { font-size: 17px; font-weight: 700; color: #14171C; }
+		.ds-t-item { font-size: 14px; font-weight: 600; color: #14171C; }
+		.ds-t-body { font-size: 13px; color: #14171C; }
+		.ds-t-caption { font-size: 11px; color: #6B7280; }
+		.ds-btn-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; }
+		.ds-btn-col { display: flex; flex-direction: column; align-items: flex-start; }
+		.ds-btn { font-size: 13px; font-weight: 600; border-radius: 8px; padding: 9px 16px; border: none; display: inline-block; }
+		.ds-btn-primary { background: #233254; color: #fff; }
+		.ds-btn-primary.pressed { background: #182238; }
+		.ds-btn-primary.disabled { background: #233254; opacity: .32; }
+		.ds-btn-outline { background: transparent; border: 1.5px solid #E4E6EA; color: #14171C; }
+		.ds-btn-outline.pressed { background: #F5F6F8; }
+		.ds-btn-destructive { background: #DC4C4C; color: #fff; }
+		.ds-btn-destructive.pressed { background: #C43F3F; }
+		.ds-btn-destructive.disabled { background: #DC4C4C; opacity: .32; }
+		.ds-state-tag { font-size: 10px; color: #6B7280; margin-top: 6px; }
+		.ds-nav-demo { display: flex; gap: 22px; margin-top: 6px; }
+		.ds-nav-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+		.ds-nav-icon { width: 20px; height: 20px; border-radius: 6px; background: #6B7280; opacity: .35; }
+		.ds-nav-item.active .ds-nav-icon { background: #233254; opacity: 1; }
+		.ds-nav-item span { font-size: 10px; color: #6B7280; }
+		.ds-nav-item.active span { color: #233254; font-weight: 600; }
+		.ds-toast { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; margin-bottom: 9px; }
+		.ds-toast:last-child { margin-bottom: 0; }
+		.ds-toast .ds-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
+		.ds-toast.success { background: #E5F5ED; color: #146840; }
+		.ds-toast.success .ds-dot { background: #1F9D63; }
+		.ds-toast.error { background: #FBEAEA; color: #8C2E2E; }
+		.ds-toast.error .ds-dot { background: #DC4C4C; }
+		.ds-toast.warning { background: #FBF3DD; color: #6E5300; }
+		.ds-toast.warning .ds-dot { background: #B98900; }
+		.ds-field { margin-bottom: 18px; }
+		.ds-field:last-child { margin-bottom: 0; }
+		.ds-field .ds-flabel { font-size: 13px; font-weight: 600; color: #14171C; margin-bottom: 8px; }
+		.ds-field .ds-input-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1.5px solid #E4E6EA; border-radius: 10px; padding: 11px 14px; }
+		.ds-field .ds-input-box .ds-placeholder { color: #9AA0AC; font-size: 13.5px; }
+		.ds-field .ds-eye { flex-shrink: 0; color: #6B7280; }
+		.ds-field.focus .ds-input-box { border-color: #233254; }
+		.ds-field.error .ds-input-box { border-color: #DC4C4C; }
+		.ds-field.disabled { opacity: .45; }
+		.ds-field .ds-ferror { font-size: 11px; color: #DC4C4C; margin-top: 6px; }
+		@media (max-width: 767px) {
+			.ds-wrap { grid-template-columns: 1fr; }
+			.ds-swatches { grid-template-columns: repeat(2, 1fr); }
+		}
+	</style>
+
 </head>
 
 <body>
@@ -83,8 +146,12 @@
 
 					
 						<div class="info">
-							<h5 class="mb-0">Role</h5>
-							<p>UI/UX designer</p>
+							<h5 class="mb-0">Role:</h5>
+							<p>User research, Sketching, Wireframing, Prototyping, Usability testing</p>
+							<h5 class="mt-3">Tools:</h5>
+							<p>Figma, Figma</p>
+							<h5 class="mt-3">Timeline:</h5>
+							<p>2023</p>
 						</div>
 					</div>
 				</div>
@@ -100,225 +167,270 @@
 						Project overview
 					</h2>
 					<p> 
-						Pars Trust wanted a mobile crypto trading app that could stand out in a crowded market. I led the design of an app where users can check their portfolio, follow the market, and trade without extra steps getting in the way. The result is a clean, mobile-first app built around three main actions — buy, sell, and transfer — with a calm visual style that still feels right for something as high-stakes as money.
-					</p>
+
+As a UI/UX designer, my objective was to create a user-friendly and efficient cryptocurrency 
+trading app that simplifies the process of buying, selling, and managing digital assets. 
+I focused on the needs of the users, ensuring that they could easily access essential information, 
+view real-time market data, and execute trades with minimal effort. By prioritizing a seamless user experience, 
+the CryptoTrade app design provides a streamlined and secure platform for both novice and experienced traders.
+</p>
 					<h2 class="mb-2 ">
 						Problem
 					</h2>
-					<p>Crypto platforms tend to throw a lot of data at users at once — candlestick charts, order books, percentage changes, alert badges, all competing for attention. For people who aren't full-time traders, this creates hesitation instead of confidence.
+				
+					<p>Cryptocurrency platforms often overwhelm users with charts, numbers, unfamiliar terminology, and multiple actions competing for attention.</p>
 
-As part of my research, I looked at competitor apps and public App Store / Google Play reviews, and found three problems kept coming up:
-					</p>
 
+				<h2 class="mb-2 ">Solutions</h2>
 					<ul>
-
-				<li>Cluttered home screens: too much data users don't need at a glance.</li>
-				<li>Desktop-first charts: interactions that feel built for a mouse, not a thumb.</li>
-				<li>Friction-heavy transactions: too many steps, and confirmation states that aren't clear.</li>
+						<li>Pars Trust was designed to make digital finance feel as simple as everyday banking.</li>
+						<li>The experience combines a clean visual hierarchy with intuitive navigation, allowing users to quickly understand.</li>
 					</ul>
-
-				<h2 class="mb-2 ">Solution</h2>
-					<p>A focused mobile trading experience designed around the user's most common actions rather than 
-						a checklist of features. The home screen surfaces only total balance, top holdings, and a 24-hour
-						performance summary. Buy, sell, and transfer are one or two taps away from any core screen.
-						Charts are rebuilt for touch, with high-contrast lines and large time-range controls. 
-						A soft green visual system keeps the experience calm, reserving green and red exclusively for 
-						price movement so those signals stay unmistakable.
-
-					</p>
 				
-					<h2 class="mb-2">Competitive analysis (my contribution)</h2>
-					<p>I audited four competing crypto apps to see what patterns users are already used to, and where the market was underserving everyday users in favor of power traders.</p>
-					<div style="text-align: center;">
-						<img src="../images/parstrust/Competitive.png" style="width: 90%; margin-bottom: 1rem;">
+					<h2 class="mb-2">User persona</h2>
+					<h4 class="subtitle mt-3">
+						Pain points
+					</h4>	
+					
+					
+							<ul>
+						<li>Finds most crypto apps overly complex and intimidating for beginners</li>
+						<li>Struggles to track overall portfolio performance across multiple assets</li>
+						<li>Distrusts platforms that lack clear explanations for investment recommendations</li>
+					</ul>
 						
-					</div>
-
-					<div class="table-responsive">
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th style="width: 25%;">Criteria</th>
-									<th style="width: 12.5%;">Coinbase</th>
-									<th style="width: 12.5%;">Binance</th>
-									<th style="width: 12.5%;">Kraken</th>
-									<th style="width: 12.5%;">Metamask</th>
-									<th style="width: 25%;">Pars Trust</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr >
-									<td>Onboarding clarity</td>
-									<td>❌ Weak</td>
-									<td>❌ Weak</td>
-									<td>⚠️ Moderate</td>
-									<td>❌ Weak</td>
-									<td>✅ Guided, low-friction</td>
-								</tr>
-								<tr >
-									<td>Chart built for touch</td>
-									<td>❌ Desktop-first</td>
-									<td>⚠️ Partial</td>
-									<td>❌ Desktop-first</td>
-									<td>⚠️ Partial</td>
-									<td>✅ Rebuilt for thumb use</td>
-								</tr>
-								<tr >
-									<td>Home screen data density</td>
-									<td>❌ High</td>
-									<td>❌ High</td>
-									<td>⚠️ Moderate</td>
-									<td>❌ High</td>
-									<td>✅ Balance, top holdings, 24h summary only</td>
-								</tr>
-								<tr >
-									<td>Transaction confirmation clarity</td>
-									<td>❌ Inconsistent</td>
-									<td>⚠️ Partial</td>
-									<td>❌ Inconsistent</td>
-									<td>⚠️ Partial</td>
-									<td>✅ Explicit "Processing" state</td>
-								</tr>
-								<tr >
-									<td>Security / verification depth</td>
-									<td>✅ Strong</td>
-									<td>✅ Strong</td>
-									<td>✅ Strong</td>
-									<td>⚠️ Moderate</td>
-									<td>✅ PIN verification on every transaction</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<p><b>Challenges I found:</b><br>
-Most apps prioritize professional-grade data over everyday usability. 
-Onboarding is usually weak, dropping users straight into complexity with no orientation. Transaction confirmation flows are inconsistent across apps, which hurts trust right when users need reassurance most.
-					</p>
-					<p><b>Strengths I found:</b><br>
-						The strongest competitors have deep asset data and charting for advanced users, solid order-book and alert systems, and mature security/verification flows that build trust with frequent traders.
-
-This research fed into the design principles and screen structure below, which I worked on with guidance from the senior designer on the project.
-
-					</p>
-
-
-
-<h2 class="mb-2">Design principles</h2>
-<p>Based on the research, the project was guided by four principles:</p>
-<ul>
-	<li><b>Clarity First:</b> reduce cognitive load on the core screens — portfolio, market, transaction.</li>
-	<li><b>Speed:</b> key actions (buy, sell, transfer) should be reachable in one or two taps.</li>
-	<li><b>Trust:</b> the visual system should communicate data clearly without feeling cold or overwhelming.</li>
-	<li><b>Focus: </b>design around the user's most frequent actions, not a full feature list.</li>
-</ul>
-
-<h2 class="mb-2">Ideate & structure</h2>
-<p>I mapped out the core screen structure and action paths based on the principles above, working from what users do most often.</p>
-<h4 class="subtitle">Key Design Decisions:</h4>
-<p>The app has five main sections in the bottom tab navigation, with real-time market data and wallet management front and center.</p>
-<ul>
-	<li><b>Home:</b> quick access to educational content and trending insights (Gainers/Losers/Top Volume).</li>
-	<li><b>Market:</b> browse all cryptocurrencies, filter by category, view detailed charts.</li>
-	<li><b>Order:</b> manage and view transaction history, completed and ongoing.</li>
-	<li><b>Wallet:</b> total balance, deposit, withdraw, send, receive.</li>
-	<li><b>Account:</b> profile, preferences, account settings.</li>
-</ul>
-<h4 class="subtitle">Key User Flows:</h4>
-<ul>
-	<li>Trading Flow: Launch app → Home → Market → Pick asset → Buy or sell → Order done.</li>
-	<li>Wallet Send Flow: Home → Wallet → Send crypto → Confirm payout → Verify PIN → Success.</li>
-	<li>Wallet History Flow: Home → Wallet → History → Transaction detail.</li>
-	<li>Order Management Flow: Home → Order → Filter orders → Order info.</li>
-</ul>
-
-<h4 class="subtitle">Flow diagram — Wallet Send:</h4>
-<p>Mapping this one out visually is what made the PIN-verification step and the need for a distinct "Processing" state obvious — on paper it looked like one more tap, but as a flow it's clearly the highest-stakes moment in the whole app.</p>
-<div style="text-align: center; overflow-x: auto;">
-<svg viewBox="0 0 980 160" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 980px; height: auto;">
-	<defs>
-		<marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-			<path d="M0,0 L6,3 L0,6 Z" fill="#8a8a8a" />
-		</marker>
-	</defs>
-	<!-- Home -->
-	<rect x="10" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
-	<text x="75" y="85" text-anchor="middle" font-size="14" fill="#333">Home</text>
-	<line x1="140" y1="80" x2="180" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
-
-	<!-- Wallet -->
-	<rect x="180" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
-	<text x="245" y="85" text-anchor="middle" font-size="14" fill="#333">Wallet</text>
-	<line x1="310" y1="80" x2="350" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
-
-	<!-- Send crypto -->
-	<rect x="350" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
-	<text x="415" y="85" text-anchor="middle" font-size="14" fill="#333">Send crypto</text>
-	<line x1="480" y1="80" x2="520" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
-
-	<!-- Confirm payout -->
-	<rect x="520" y="55" width="130" height="50" rx="8" fill="#f4f7f5" stroke="#c9d6cf" />
-	<text x="585" y="85" text-anchor="middle" font-size="14" fill="#333">Confirm payout</text>
-	<line x1="650" y1="80" x2="690" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
-
-	<!-- Verify PIN -->
-	<rect x="690" y="55" width="130" height="50" rx="8" fill="#fff6e0" stroke="#e6c877" />
-	<text x="755" y="80" text-anchor="middle" font-size="14" fill="#333">Verify PIN</text>
-	<text x="755" y="96" text-anchor="middle" font-size="10" fill="#8a7433">highest-stakes step</text>
-	<line x1="820" y1="80" x2="840" y2="80" stroke="#8a8a8a" stroke-width="1.5" marker-end="url(#arrow)" />
-
-	<!-- Success -->
-	<rect x="840" y="55" width="130" height="50" rx="8" fill="#eaf6ec" stroke="#8fc79b" />
-	<text x="905" y="85" text-anchor="middle" font-size="14" fill="#2f6b3a">Success</text>
-</svg>
-</div>
-
-
-					<h2 class="mb-2 ">Prototype (my contribution)</h2>
-					<p>I moved from paper sketches to digital wireframes, then built the interactive prototype.</p>
+				<h4 class="subtitle mt-3">
+						Motivation
+					</h4>	
+					<ul>
+						<li>Wants to grow wealth through crypto without spending hours learning complex systems   </li>
+						<li>Needs a reliable platform with transparent powered insights</li>
+						<li>Prefers a clean, distraction-free interface with clear visual cues</li>
+					</ul>
 					
 					
-					<h4 class="subtitle">Low-Fidelity Wireframes:</h4>
-					<p>I started with paper sketches and low-fi digital wireframes to work out layout priorities based on the research findings 
-						 simplifying onboarding, locking the nav bar to the bottom for thumb reach, 
-						and setting up asset cards to show key data (like 24h % change) right away without drilling in.</p>
-
-					<p style="text-align: center;"><img src="../images/parstrust/lofi.png" style="width: 70%;"></p>
-
-
-					<h4 class="subtitle">Interactive Prototype:</h4>
-						<p>I built a high-fidelity interactive prototype in Figma, focused on the transaction and wallet management Flows
-							 the real-time price chart with touch-friendly time selectors, a bottom action bar for buy/sell/transfer, 
-							 PIN verification for transaction security, and confirmation screens (like "Purchase Complete").</p>
-							 <p>Based on the confirmation-flow research (inconsistent, low-trust patterns I found across competitor apps), 
-								I added a "Processing" state between PIN entry and the final "Transfer Complete" screen, with the confirm button 
-								disabled during that window to give the user a clear signal that the system had registered their action.</p>
-
-						<p style="text-align: center;"><img src="../images/parstrust/hifi.jpg" style="width: 80%;"></p>
-
-						<h4 class="subtitle">Handling Failure Gracefully:</h4>
-						<p>Money-moving flows can't fail silently, so I designed explicit states for the moments
-							where a transaction can't complete as expected:</p>
-						<ul>
-							<li><b>Insufficient balance:</b> The buy/sell/transfer action is disabled before
-								submission (not after), with the exact shortfall shown inline so the user doesn't
-								hit a wall at the PIN step.</li>
-							<li><b>PIN mismatch or timeout:</b> After a failed PIN attempt, the field clears with a
-								clear retry message; after repeated failures, the flow locks temporarily and
-								explains why, instead of failing silently.</li>
-							<li><b>Network/price-feed interruption mid-transaction:</b> If live pricing drops during
-								a buy/sell, the confirm action is paused and the user is shown a "reconnecting"
-								state rather than letting them confirm against stale data.</li>
-						</ul>
-						<p>These states matter more in a financial app than almost anywhere else — an unclear
-							failure isn't just a bad experience, it's a trust problem.</p>
-
-							<p style="text-align: center;"><img src="../images/parstrust/error.jpg" style="width: 80%;"></p>
+					
 
 						
 
-				<h2 class="mb-2">Prototype:</h2>
+				<h2 class="mb-2">User flow</h2>
+				 <p style="text-align: center;"><img src="../images/parstrust/user-flow.png" style="width: 70%;"></p>
+
+				 <h2 class="mb-2">Design system</h2>
+					<p>Before moving into full screens, I put together a lightweight design system — color, type, and reusable component states — so the interface stayed consistent across every flow instead of being rebuilt screen by screen.</p>
+
+					<div class="ds-wrap">
+						<div class="ds-col">
+							<div class="ds-card">
+								<h4>Colors</h4>
+								<p class="ds-sub">Every color has exactly one job. Green and red are reserved for price movement only — never reused for a button or any other status.</p>
+
+								<div class="ds-group">
+									<div class="ds-label">PRIMARY</div>
+									<div class="ds-swatches">
+										<div class="ds-swatch"><div class="ds-chip" style="background:#233254"></div><div class="name">Action / Navy</div><div class="hex">#233254</div></div>
+										<div class="ds-swatch"><div class="ds-chip" style="background:#EBEEF4"></div><div class="name">Action Tint</div><div class="hex">#EBEEF4</div></div>
+									</div>
+								</div>
+
+								<div class="ds-group">
+									<div class="ds-label">SEMANTIC · PRICE</div>
+									<div class="ds-swatches">
+										<div class="ds-swatch"><div class="ds-chip" style="background:#1F9D63"></div><div class="name">Price Up</div><div class="hex">#1F9D63</div></div>
+										<div class="ds-swatch"><div class="ds-chip" style="background:#DC4C4C"></div><div class="name">Price Down</div><div class="hex">#DC4C4C</div></div>
+									</div>
+								</div>
+
+								<div class="ds-group">
+									<div class="ds-label">NEUTRAL</div>
+									<div class="ds-swatches">
+										<div class="ds-swatch"><div class="ds-chip" style="background:#14171C"></div><div class="name">Ink</div><div class="hex">#14171C</div></div>
+										<div class="ds-swatch"><div class="ds-chip" style="background:#6B7280"></div><div class="name">Muted</div><div class="hex">#6B7280</div></div>
+										<div class="ds-swatch"><div class="ds-chip" style="background:#F5F6F8;border:1px solid #E4E6EA"></div><div class="name">Panel</div><div class="hex">#F5F6F8</div></div>
+										<div class="ds-swatch"><div class="ds-chip" style="background:#E4E6EA"></div><div class="name">Line</div><div class="hex">#E4E6EA</div></div>
+									</div>
+								</div>
+							</div>
+
+							<div class="ds-card">
+								<h4>Buttons &amp; states</h4>
+								<p class="ds-sub">Default, pressed, and disabled variants for every tappable control — locking the disabled state in right after the first tap prevents a confirm action from firing twice.</p>
+
+								<div class="ds-group">
+									<div class="ds-label">PRIMARY</div>
+									<div class="ds-btn-row">
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-primary">Continue</span><div class="ds-state-tag">Default</div></div>
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-primary pressed">Continue</span><div class="ds-state-tag">Pressed</div></div>
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-primary disabled">Continue</span><div class="ds-state-tag">Disabled</div></div>
+									</div>
+								</div>
+
+								<div class="ds-group">
+									<div class="ds-label">OUTLINE</div>
+									<div class="ds-btn-row">
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-outline">Sell</span><div class="ds-state-tag">Default</div></div>
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-outline pressed">Sell</span><div class="ds-state-tag">Pressed</div></div>
+									</div>
+								</div>
+
+								<div class="ds-group">
+									<div class="ds-label">DESTRUCTIVE</div>
+									<div class="ds-btn-row">
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-destructive">Delete</span><div class="ds-state-tag">Default</div></div>
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-destructive pressed">Delete</span><div class="ds-state-tag">Pressed</div></div>
+										<div class="ds-btn-col"><span class="ds-btn ds-btn-destructive disabled">Delete</span><div class="ds-state-tag">Disabled</div></div>
+									</div>
+								</div>
+
+								<div class="ds-group">
+									<div class="ds-label">BOTTOM NAV</div>
+									<div class="ds-nav-demo">
+										<div class="ds-nav-item"><div class="ds-nav-icon"></div><span>Home</span></div>
+										<div class="ds-nav-item active"><div class="ds-nav-icon"></div><span>Market</span></div>
+										<div class="ds-nav-item"><div class="ds-nav-icon"></div><span>Order</span></div>
+										<div class="ds-nav-item"><div class="ds-nav-icon"></div><span>Wallet</span></div>
+										<div class="ds-nav-item"><div class="ds-nav-icon"></div><span>Account</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="ds-col">
+							<div class="ds-card">
+								<h4>Typography</h4>
+								<p class="ds-sub">One family — Inter — carries the whole app. Prices always use tabular figures so digits don't shift width as the market moves.</p>
+								<div class="ds-type-row"><span class="ds-tlabel">Heading 1 · 30/700</span><span class="ds-t-balance">$149,478.25</span></div>
+								<div class="ds-type-row"><span class="ds-tlabel">Screen title · 20/700</span><span class="ds-t-title">Wallet</span></div>
+								<div class="ds-type-row"><span class="ds-tlabel">Item name · 16/600</span><span class="ds-t-item">Bitcoin</span></div>
+								<div class="ds-type-row"><span class="ds-tlabel">Body · 16/400</span><span class="ds-t-body">Estimated balance across all assets</span></div>
+								
+							</div>
+
+							
+
+							<div class="ds-card">
+								<h4>Text field</h4>
+								<p class="ds-sub">Default, focus, error, and disabled states share one layout — with a right-aligned reveal icon for sensitive fields like email or password — so a field never has to be relearned.</p>
+
+								<div class="ds-field">
+									<div class="ds-flabel">Email</div>
+									<div class="ds-input-box">
+										<span class="ds-placeholder">example@gmail.com</span>
+										<svg class="ds-eye" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+									</div>
+									<div class="ds-state-tag">Default</div>
+								</div>
+
+								<div class="ds-field focus">
+									<div class="ds-flabel">Email</div>
+									<div class="ds-input-box">
+										<span class="ds-placeholder">example@gmail.com</span>
+										<svg class="ds-eye" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+									</div>
+									<div class="ds-state-tag">Focus</div>
+								</div>
+
+								<div class="ds-field error">
+									<div class="ds-flabel">Email</div>
+									<div class="ds-input-box">
+										<span class="ds-placeholder">example@gmail.com</span>
+										<svg class="ds-eye" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+									</div>
+									<div class="ds-ferror">This is an error message.</div>
+								</div>
+
+								<div class="ds-field disabled">
+									<div class="ds-flabel">Email</div>
+									<div class="ds-input-box">
+										<span class="ds-placeholder">example@gmail.com</span>
+										<svg class="ds-eye" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+									</div>
+									<div class="ds-state-tag">Disabled</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<h2 class="mb-2 mt-3">Visual design</h2>
+					<p>The app's visual design was carefully crafted to provide a clean and modern interface that aligns with the app's overall goals. We chose a minimalistic design with bright accent colors and creative cards to ensure an intuitive user experience.</p>
 				
+				
+				<div class="row">
+					<div class="col-6" style="align-content: center;">
+						<h4 class="subtitle">Onboarding</h4>
+						<h5>Welcome to Your Crypto Journey!</h5>
+						<p>The onboarding screens are your first step into our app, offering a quick introduction to the exciting features and benefits we provide. Designed to guide you seamlessly through the app's essential functions, you’ll learn how to sign up, create your profile, and experience the convenience of managing your crypto investments. Discover how easy it is to navigate the world of cryptocurrency with our user-friendly platform</p>
+					</div>
+					<div class="col-6">
+
+						<img src="../images/parstrust/Onbording.jpg" style="width: 100%;">
+					</div>
 				</div>
+
+
+
+				<div class="row">
+					<div class="col-6">
+
+						<img src="../images/parstrust/login.jpg" style="width: 100%;">
+					</div>
+					<div class="col-6" style="align-content: center;">
+						<h4 class="subtitle">Authorization & Verification</h4>
+						<p>Our onboarding and registration process is designed to ensure maximum security while maintaining a smooth user experience. Users can easily create and secure their accounts through a guided, step-by-step flow:</p>
+						<ul>
+							<li><b>Account Creation & Verification:</b> Fast sign-up using social media accounts (Google, Facebook, X) or email with OTP verification, followed by basic profile setup and preference profiling to tailor the experience.</li>
+						    <li><b>Identity Verification (KYC):</b> Hassle-free document scanning (ID Card or Passport) with real-time camera guidance to fulfill compliance standards securely.</li>
+						    <li><b>  Security & Personalization:</b> Multi-layer security setup, including terms acceptance, custom PIN creation, biometric authentication (Fingerprint), and immediate account readiness.</li>
+						</ul>
+					</div>
+					
+				</div>
+
+
+
+
+				<div class="row">
+					<div class="col-6" style="align-content: center;">
+						<h4 class="subtitle">Home / Dashboard</h4>
+						<p>The dashboard is designed with a user-centric approach, ensuring that the Crypto App is not only functional but also easy to navigate. By incorporating user feedback and iterative testing, we have created a streamlined interface with a clear visual hierarchy. Robust security features are also integrated to instill confidence in users regarding their digital transactions, ensuring a safe and reliable trading environment.   </p>
+					</div>
+					<div class="col-6">
+
+						<img src="../images/parstrust/home.jpg" style="width: 100%;">
+					</div>
+				</div>
+
+
+	<div class="row">
+					<div class="col-6">
+
+						<img src="../images/parstrust/market.jpg" style="width: 100%;">
+					</div>
+					<div class="col-6" style="align-content: center;">
+						<h4 class="subtitle">Market</h4>
+						<p>With our app, discovering the perfect crypto option is a breeze. Enter your preferred criteria in the search bar and use filters to sort by coin type, price, and other features. Just a few taps, and you’re ready to buy or sell with confidence!   </p>
+					</div>
+					
+				</div>
+
+
+				<div class="row">
+					<div class="col-6" style="align-content: center;">
+						<h4 class="subtitle">Easy steps on the App</h4>
+							<p>Managing your cryptocurrency may seem complicated, but our intuitive and straightforward processes simplify buying, selling, and managing your digital assets, allowing you to focus on enjoying your financial journey.</p>
+					</div>
+					<div class="col-6">
+
+						<img src="../images/parstrust/sell.jpg" style="width: 100%;">
+					</div>
+				</div>
+				 <h4 class="subtitle mt-3" style="text-align: center;" >Other screens</h4>
+     <p style="text-align: center;"><img src="../images/parstrust/other-screens.jpg" style="width: 90%;"></p>
+				
+	<h2 class="mt-3">Prototype</h2>
+	</div>
+
+				
               <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/1kuFwmuFd65IF6ebPDYs5R/Pars-trust?node-id=1-855&viewport=188%2C90%2C0.03&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A847&page-id=0%3A1&embed-host=share" allowfullscreen></iframe>
 			</div>
 			<div class="row mt-5 justify-content-center">
@@ -371,8 +483,7 @@ This research fed into the design principles and screen structure below, which I
 
 	<!-- Google Map -->
 	<script src="../plugins/google-map/map.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
 	<!-- Main Script -->
 	<script src="../js/script.js"></script>
 
